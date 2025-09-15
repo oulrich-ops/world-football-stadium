@@ -123,9 +123,7 @@ def load_data(json_data):
     file_name = "stadiums_data" + pd.Timestamp.now().strftime("%Y%m%d%H%M%S") + ".csv"
     df.to_csv(
         "abfs://footballdataeng@footdataeng.dfs.core.windows.net/data/" + file_name,
-        storage_options={
-            "account_key": "riiOLtvpHiOJ4OQGLc5ZMFai0CDZGMq1xOE1ugRbBoWytNpH0bo3R5lEOLZWrrVOOibkDG63GrDF+AStGOK7bw=="
-        },
+        storage_options={"account_key": ""},
         index=False,
     )
 
