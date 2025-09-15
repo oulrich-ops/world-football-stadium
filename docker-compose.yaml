@@ -1,0 +1,33 @@
+services:
+  webserver:
+    image: apache/airflow:slim-3.1.0b1-python3.13
+    command: "standalone"
+    entrypoint: [ "/opt/airflow/script/entrypoint.sh" ]
+
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./script/entrypoint.sh:/opt/airflow/script/entrypoint.sh
+      - ./requirements.txt:/opt/airflow/requirements.txt
+      - ./data:/opt/airflow/data
+      - ./pipelines:/opt/airflow/pipelines
+    ports:
+      - "8000:8080"
+
+    networks:
+      - confluent
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    networks:
+      - confluent
+networks:
+  confluent:
