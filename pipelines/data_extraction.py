@@ -68,6 +68,8 @@ def extract_data_from_text(html_content: str, ti=None):
 
 def clean_text(text: str) -> str:
     text = text.replace("\n", " ").replace("\r", " ").strip()
+    if text.find(",") != -1:
+        text = text.replace(",", " ").strip()
     if text.find("♦"):
         text = text.replace("♦", "").strip()
 
@@ -98,9 +100,8 @@ def transform_data(data):
     logger.info(data)
     df = pd.DataFrame(data)
 
-    df["capacity"] = (
-        pd.to_numeric(df["capacity"], errors="coerce").fillna(0).astype(int)
-    )
+    df["capacity"] = df["capacity"].str.replace(",", "").str.strip().astype(int)
+    
     df["location"] = df.apply(
         lambda row: get_coordinates(row["country"], row["stadium"]), axis=1
     )
@@ -121,13 +122,14 @@ def load_data(json_data):
     df = pd.read_json(json_data)
 
     file_name = "stadiums_data" + pd.Timestamp.now().strftime("%Y%m%d%H%M%S") + ".csv"
+    df.to_csv(f"data/{file_name}", index=False)
     df.to_csv(
         "abfs://footballdataeng@footdataeng.dfs.core.windows.net/data/" + file_name,
-        storage_options={"account_key": ""},
+        storage_options={"account_key": "riiOLtvpHiOJ4OQGLc5ZMFai0CDZGMq1xOE1ugRbBoWytNpH0bo3R5lEOLZWrrVOOibkDG63GrDF+AStGOK7bw=="},
         index=False,
     )
 
-    df.to_csv(f"data/{file_name}", index=False)
+
 
 
 #
