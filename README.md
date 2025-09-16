@@ -1,6 +1,6 @@
 # 🏟️ Football Stadium Data Pipeline – Azure & Tableau  
 
-![Project Banner](./img/imageProjet.jpg.jpg)  
+![Project Banner](./img/imageProjet.jpg)  
 
 ## 📌 Description  
 Ce projet met en œuvre un **pipeline complet de Data Engineering** pour analyser des **données de stades de football**.  
