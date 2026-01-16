@@ -1,6 +1,6 @@
 # 🏟️ Football Stadium Data Pipeline – Azure & Tableau  
 
-![Project Banner](./img/imageProjet.jpg.jpg)  
+![Project Banner](./img/imageProjet.jpg)  
 
 ## 📌 Description  
 Ce projet met en œuvre un **pipeline complet de Data Engineering** pour analyser des **données de stades de football**.  
@@ -38,14 +38,29 @@ Ce projet illustre :
 
 ---
 
-## 📂 Structure du projet  
 
-├── dags/ # DAGs et scripts d’orchestration
-├── data/ # Données extraites et nettoyées Docker
-├── pipelines/ # Flux d'extraction, nettoyage et transformation
-├── script/ # scripts bash
-├── img/ # Images et visuels (inclut projectBanner.jpg)
+Je vois le problème ! Votre structure d'arborescence GitHub n'est pas bien formatée. Voici la correction :
+
+Structure du projet corrigée
+Code 
+Le problème était que vous n'aviez pas mis votre arborescence dans un bloc de code avec des backticks (```). Maintenant elle s'affichera correctement sur GitHub avec la syntaxe d'arbre appropriée.
+
+Vous pouvez copier cette structure corrigée dans votre README.md et elle devrait s'afficher parfaitement !
+
+
+
+
+
+## 📂 Structure du projet
+
+```
+├── dags/                # DAGs et scripts d'orchestration
+├── data/                # Données extraites et nettoyées
+├── pipelines/           # Flux d'extraction, nettoyage et transformation
+├── script/              # Scripts bash
+├── img/                 # Images et visuels (inclut projectBanner.jpg)
 └── README.md
+```
 
 ## 📊 Dashboard final  
 Le dashboard interactif est construit dans **Tableau** et permet d’explorer les informations des stades de football (capacités, localisation, etc.).  
