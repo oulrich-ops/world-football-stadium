@@ -2,7 +2,7 @@ services:
   webserver:
     image: apache/airflow:slim-3.1.0b1-python3.13
     command: "standalone"
-    entrypoint: [ "/opt/airflow/script/entrypoint.sh" ]
+    entrypoint: [ "bash", "/opt/airflow/script/entrypoint.sh" ]
 
     depends_on:
       - postgres
